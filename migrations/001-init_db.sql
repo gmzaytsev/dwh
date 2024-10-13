@@ -39,10 +39,10 @@ create table public.flights (
 	flight_no char(6) not null,
 	scheduled_departure timestamptz not null,
 	scheduled_arrival timestamptz not null,
-	departure_airport char(3) references public.airports(airport_code) not null,
-	arrival_airport char(3) references public.airports(airport_code) not null,
+	departure_airport char(3) references public.airports(airport_code),
+	arrival_airport char(3) references public.airports(airport_code),
 	status varchar(20) not null,
-	aircraft_code char(3) references public.aircrafts(aircraft_code) not null,
+	aircraft_code char(3) references public.aircrafts(aircraft_code),
 	actual_departure timestamptz,
 	actual_arrival timestamptz
 ); 
