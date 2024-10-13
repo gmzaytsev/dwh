@@ -55,11 +55,11 @@ create table public.ticket_flights (
 	primary key (ticket_no, flight_id)
 );
 
-
 create table public.boarding_passes (
 	ticket_no char(13) not null,
 	flight_id integer not null,
 	boarding_no integer not null,
 	seat_no varchar(4) not null,
-	FOREIGN KEY (ticket_no, flight_id) REFERENCES public.ticket_flights(ticket_no, flight_id)
+	primary key (ticket_no, flight_id),
+	FOREIGN KEY (ticket_no, flight_id) references public.ticket_flights(ticket_no, flight_id)
 );
