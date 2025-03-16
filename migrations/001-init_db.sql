@@ -4,7 +4,7 @@ create table public.airports (
 	city text not null,
 	coordinates_lon decimal not null, 
 	coordinates_lat decimal not null,
-	time_zone text not null
+	timezone text not null
 );
 
 create table public.aircrafts (
@@ -15,8 +15,9 @@ create table public.aircrafts (
 
 create table public.seats (
 	aircraft_code char(3) references public.aircrafts(aircraft_code),
-	seat_no varchar(4) primary key,
-	fare_conditions varchar(10) not null
+	seat_no varchar(4),
+	fare_conditions varchar(10) not null,
+	primary key (aircraft_code, seat_no)
 );
 
 create table public.bookings (
