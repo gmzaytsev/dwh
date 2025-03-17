@@ -8,11 +8,23 @@
 
 Для запуска необходимо выполнить команду 
 ```
-sh run.sh
+docker-compose up
 ```
-После выполения команды запустится master (доступен порту 5432) и repliсa (доступна порту 5433)
+После необходимо выполнить команду, для подключения connectors
 
-Данные для доступа и к master и replica одинаковые: login = `user`  password = `password`
+```
+curl -X POST --location "http://localhost:8083/connectors" -H "Content-Type: application/json" -H "Accept: application/json" -d @connectors/connector.json
+```
+
+После выполения команды поднимутся все компоненты необходимые для всех 4 дз. 
+
+- master
+- replica
+- dwh
+- debezium
+- airflow
+- grafanas
+
 
 ### Добавление новых миграций
 
@@ -20,8 +32,8 @@ sh run.sh
 
 Название файлов должны иметь следующий формат `<порядковый номер>-<краткое описание>.sql`
 
+Миграции для dwh слоя необходимо заводить в папке `dwh_migrations`
+
 ### Выполнение работы
 
-При реализации за основу брались скрипты с семинара 
-
-https://github.com/mgcrp/hse_ftda_dwh_course_2024/tree/master/week02/sem/demo2_automated_replication
+При реализации за основу брались скрипты с семинров.
